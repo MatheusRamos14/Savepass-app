@@ -47,7 +47,9 @@ export function Home() {
     // Filter results inside data, save with setSearchListData
     if (searchText === '') return;
     
-    setSearchListData(data.filter(item => item.service_name === searchText))
+    setSearchListData(data.filter(item => {
+      if (item.service_name.includes(searchText)) return item
+    }))
   }
 
   function handleChangeInputText(text: string) {
